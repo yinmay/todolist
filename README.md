@@ -22,5 +22,4 @@ a todo list created by react
     localStorage.setItem('items',JSON.stringify(items))
  }
  ```
-* add time!!!
-* 
+* use `dangerouslySetInnerHTML` to contain the code 
