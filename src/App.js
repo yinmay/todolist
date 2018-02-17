@@ -11,16 +11,30 @@ class App extends Component {
     super()
     this.handleSubmitInput = this.handleSubmitInput.bind(this)
     this.state={
-      items:[],
-      
+      items:[], 
     }
 
   }
+  componentWillMount () {
+    this._loadListItem()
+}
+  _loadListItem(){
+    let items = localStorage.getItem('items')
+    if(items){
+      items = JSON.parse(items)
+        this.setState({items})
+    }
+ }
+ _saveListItem(items){
+    localStorage.setItem('items',JSON.stringify(items))
+ }
   handleSubmitInput(item){
     this.state.items.push(item)
     this.setState({
       items: this.state.items
     })
+
+    this._saveListItem(this.state.items)
 
 }
 
@@ -28,7 +42,6 @@ handleDeleteItem(index){
 
 const {items} = this.state
 items.splice(index,1)
-// console.log(items)
 this.setState({items})
 
 }
