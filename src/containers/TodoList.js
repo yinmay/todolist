@@ -26,8 +26,11 @@ class TodoListContainer extends Component {
             ...comments.slice(index + 1)
         ]
         localStorage.setItem('items', JSON.stringify(newItems))
-        if(this.props.onDeleteItem(index))
+        if(this.props.onDeleteItem){
+            this.props.onDeleteItem(item)
+        }   
     }
+
     render() {
         return (
             <TodoList items = {this.props.items} onDeleteItem = {this.handleDeleteItem.bind(this)} />
