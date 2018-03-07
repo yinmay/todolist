@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import '../App.css';
 import '../index.css';
-import { stringify } from 'querystring';
+// import { stringify } from 'querystring';
 
 
 class SubmitForm extends Component {
@@ -10,12 +10,13 @@ class SubmitForm extends Component {
         onSubmit: PropTypes.func
       }
 
-    constructor(){
-        super()
+      static defaultProps = {
+        text: ''
+      }
+    constructor(props){
+        super(props)
         this.state={
-            text:'',
-            
-            
+            text:props.text,    
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
