@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import './index.css';
 
 import TodoList from './components/TodoList'
 import SubmitForm from './components/SubmitForm'
+
+let hashHistory = Router.hashHistory;
 
 class App extends Component {
   constructor(){
@@ -48,12 +49,14 @@ this.setState({items})
   
   render() {
     return (
+      <Router history={hashHistory} >
       <div className='comment-input'>
         <TodoList items={this.state.items} onDeleteItem={this.handleDeleteItem.bind(this)}/>
         <SubmitForm onSubmit = {this.handleSubmitInput}
           
         />
       </div>
+      </Router>
     );
   }
 }
